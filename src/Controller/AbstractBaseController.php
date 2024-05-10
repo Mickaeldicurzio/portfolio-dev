@@ -1,11 +1,24 @@
 <?php
-// src/Controller/MainController.php
+// src/Controller/AbstractBaseController.php
 namespace App\Controller;
 
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+
 
 class AbstractBaseController  extends AbstractController
 {
+    /**
+     * @return LoggerInterface
+     *
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
+    public function getLogger(): LoggerInterface
+    {
+            return $this->container->get('monolog.logger.console');
+    }
+
 }
