@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<main role="main" id="maincontent">
+
+    <div class="Message">
+        {% for flash in app.flashes %}
+            {% for message in flash %}
+                {{ message }}
+            {% endfor %}
+        {% endfor %}
+    </div>
+
+    {{ render_esi(controller(
+        'App\\Controller\\LayoutController::renderNavbarAction'
+    )) }}
+
+    {% block content %}
+    {% endblock %}
+    
+</main>
+{% endblock %}

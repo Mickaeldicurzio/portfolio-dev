@@ -2,4 +2,6 @@ controllers:
     resource:
         path: ../src/Controller/
         namespace: App\Controller
+        # this is added to the beginning of all imported route URLs
+#    prefix: '/dev'
     type: attribute
